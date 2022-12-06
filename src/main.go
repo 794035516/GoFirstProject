@@ -1,4 +1,6 @@
-package main //一个独立可执行的go语言程序必须要有package main的声明
+package main
+
+//一个独立可执行的go语言程序必须要有package main的声明
 
 import "fmt"
 
@@ -12,6 +14,7 @@ type student struct {
 	name string
 }
 
+// g
 // 为了创建一个二进制可执行文件，我们需要让我们的程序成为 main 包的一部分，而且必须要有一个作为执行入口点的 main 函数
 func main() {
 	fmt.Println("hello world!!!")

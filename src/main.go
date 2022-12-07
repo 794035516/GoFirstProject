@@ -38,21 +38,56 @@ func main() {
 	name = "lijx"
 	var d = true
 	fmt.Println(d, name)
+	//指针的使用
 	var ip *int
 	ip = &num
 	fmt.Println(ip, *ip, &ip)
 	ip = nil
 	fmt.Println(ip)
+	//数组的使用
 	var fruit = [5]string{"peach"}
 	var integers [10]int
 	for i := 0; i < len(integers); i++ {
 		integers[i] = i
 	}
-	fmt.Println(fruit)
+	fmt.Println(fruit) //go中数组名仅仅表示整个数组，是一个完整的值，一个数组变量即表示整个数组
 	fmt.Println(integers)
+
+	//数组指针
+	var arr1 = []int{11, 12, 13}
+	var arrB = &arr1
+	for i, v := range *arrB {
+		fmt.Println(i, v)
+	}
+	for _, v := range arr1 {
+		fmt.Println(v)
+	}
+
+	//结构体的使用
 	var lijx student = student{age: 21, name: "lijx"}
-	fmt.Println(lijx)
+	var lijx2 student
+	lijx2.age = 33
+	lijx2.name = "lijx2"
+	fmt.Println(lijx, len(lijx.name))
+	fmt.Println(lijx2, len(lijx2.name))
 	lijx.age = 18
 	fmt.Println(lijx)
 
+	//数组切片的使用
+	arr := []int{1, 2, 3, 4, 5}
+	arr = append(arr[:0], arr[1:]...)
+	fmt.Println(arr)
+	arr = []int{1, 2, 3, 4, 5}
+	arr = append(arr[:0], arr[3:]...)
+	fmt.Println(arr)
+	fmt.Println("------------------")
+	arr = []int{1, 2, 3, 4, 5}
+	arr = arr[:copy(arr, arr[1:])]
+	fmt.Println(arr)
+	arr = []int{1, 2, 3, 4, 5}
+	arr = arr[:copy(arr, arr[3:])]
+	fmt.Println(arr)
+	arr = []int{1, 2, 3, 4, 5}
+	slice := arr[0:3:len(arr)] //第三个参数过大会被识别成木马程序
+	fmt.Println(slice)
 }
